@@ -32,7 +32,12 @@ export default function sassPluginSetup(
       const file = await Deno.readTextFile(args.path);
       const css = sass(
         file,
-        { style: initialOptions.minify ? 'compressed' : 'expanded' }
+        { 
+          style: initialOptions.minify ? 'compressed' : 'expanded',
+          load_paths: [
+            args.path
+          ]
+        }
       ).to_string();
 
       return {
