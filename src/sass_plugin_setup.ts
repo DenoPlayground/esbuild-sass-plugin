@@ -44,7 +44,11 @@ export default function sassPluginSetup(
         };
       } catch (error) {
         return {
-          errors: [ error ],
+          errors: [ {
+            id: error.name,
+            text: error.message,
+            detail: error.stack
+          } ],
           contents: '',
           loader: 'css',
         };
