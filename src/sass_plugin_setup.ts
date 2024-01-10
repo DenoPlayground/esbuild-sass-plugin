@@ -33,11 +33,7 @@ export default function sassPluginSetup(
       const css = sass(
         file,
         { 
-          style: initialOptions.minify ? 'compressed' : 'expanded',
-          load_paths: [
-            args.namespace,
-            args.path
-          ]
+          style: initialOptions.minify ? 'compressed' : 'expanded'
         }
       ).to_string();
 
