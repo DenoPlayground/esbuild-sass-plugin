@@ -9,6 +9,9 @@ import getTextContent from "./get_text_content.ts";
 
 /**
  * This function registers the onLoad function and sets some initial options.
+ *
+ * @param initialOptions Initial options from ESBuild for the plugin to use
+ * @param onLoadFunction The `onLoad` function for the plugin
  */
 export default function sassPluginSetup(
   initialOptions: BuildOptions,
@@ -22,7 +25,7 @@ export default function sassPluginSetup(
       | undefined
       | Promise<OnLoadResult | null | undefined>,
   ) => void,
-) {
+): void {
   onLoadFunction(
     { filter: /\.scss$/ },
     async (args) => {
