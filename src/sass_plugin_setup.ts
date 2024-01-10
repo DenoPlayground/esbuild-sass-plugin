@@ -35,6 +35,7 @@ export default function sassPluginSetup(
         { 
           style: initialOptions.minify ? 'compressed' : 'expanded',
           load_paths: [
+            args.namespace,
             args.path
           ]
         }
