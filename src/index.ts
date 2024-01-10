@@ -1,7 +1,7 @@
 import * as esbuild from "https://deno.land/x/esbuild@v0.19.11/mod.js";
 import sass from "https://deno.land/x/denosass@1.0.6/mod.ts"
 
-const sassPlugin: esbuild.Plugin = {
+export const sassPlugin: esbuild.Plugin = {
     name: "esbuild-plugin-sass",
     setup: (build) => {
         build.onLoad(
