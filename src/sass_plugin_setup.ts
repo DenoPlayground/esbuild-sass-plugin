@@ -30,9 +30,10 @@ export default function sassPluginSetup(
     { filter: /\.scss$/ },
     async (args) => {
       const file = await Deno.readTextFile(args.path);
-      const css = sass(file, {
-        style: initialOptions.minify ? 'compressed' : 'expanded',
-      }).to_string();
+      const css = sass(
+        file,
+        { style: initialOptions.minify ? 'compressed' : 'expanded' }
+      ).to_string();
 
       return {
         contents: getTextContent(css),
