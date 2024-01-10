@@ -3,7 +3,7 @@
 Usage:
 
 ```ts
-import sassPlugin from 'https://deno.land/x/esbuild_plugin_sass@v0.1.0/mod.ts';
+import sassPlugin from 'https://deno.land/x/esbuild_plugin_sass/mod.ts';
 
 await esbuild.build({
   allowOverwrite: true,
