@@ -7,8 +7,12 @@ export const sassPlugin: esbuild.Plugin = {
         build.onLoad(
             { filter: /\.scss$/ },
             async (args) => {
-                const file = await Deno.readTextFile(args.path)
-                const css = sass(file).to_string(build.initialOptions.minify ? 'compressed' : 'expanded')
+                console.log(args.path);
+                
+                const file = (await Deno.readTextFile(args.path)).trim() || '/**/'
+                const css = sass(file, {
+                    style: build.initialOptions.minify ? 'compressed' : 'expanded'
+                }).to_string()
                 
                 return {
                     contents: css.toString(),
