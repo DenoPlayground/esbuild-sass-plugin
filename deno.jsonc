@@ -3,11 +3,39 @@
         "index": "deno run --check --unstable -A ./src/index.ts"
     },
     "exclude": [
-        "**/*.test.ts"
+        "./dist/"
     ],
     "test": {
         "include": [
             "**/*.test.ts"
         ]
+    },
+    "compilerOptions": {
+        "experimentalDecorators": true,
+        "target": "ES6",
+        "module": "ES6"
+    },
+    "fmt": {
+        "singleQuote": true,
+        "lineWidth": 120,
+        "indentWidth": 2
+    },
+    "lint": {
+        "rules": {
+            "tags": [
+                "recommended"
+            ],
+            "include": [
+                "camelcase",
+                "default-param-last",
+                "eqeqeq",
+                "explicit-function-return-type",
+                "explicit-module-boundary-types",
+                "guard-for-in",
+                "no-eval",
+                "no-sparse-arrays",
+                "prefer-ascii"
+            ]
+        }
     }
 }
