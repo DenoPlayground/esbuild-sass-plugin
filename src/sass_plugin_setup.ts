@@ -30,17 +30,27 @@ export default function sassPluginSetup(
     { filter: /\.scss$/ },
     async (args) => {
       const file = await Deno.readTextFile(args.path);
-      const css = sass(
-        file,
-        { 
-          style: initialOptions.minify ? 'compressed' : 'expanded'
-        }
-      ).to_string();
+      try {
+        const css = sass(
+          file,
+          { 
+            style: initialOptions.minify ? 'compressed' : 'expanded'
+          }
+        ).to_string();
 
-      return {
-        contents: getTextContent(css),
-        loader: 'css',
-      };
+        return {
+          contents: getTextContent(css),
+          loader: 'css',
+        };
+      } catch (error) {
+        return {
+          errors: [ error ],
+          contents: '',
+          loader: 'css',
+        };
+      }
+
+      
     },
   );
 }
