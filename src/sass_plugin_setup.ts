@@ -29,11 +29,9 @@ export default function sassPluginSetup(
 ): void {
   onLoadFunction(
     { filter: /\.scss$/ },
-    async (args) => {
-      console.log(args);
-      
+    async (args) => {      
       const fileDirectoryPath = dirname(args.path);
-      const fileContent = await Deno.readTextFile(args.path);
+      const fileContent = (await Deno.readTextFile(args.path)).trim();
 
       try {
         const cssContent = sass(
