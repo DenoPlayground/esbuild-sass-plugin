@@ -42,7 +42,10 @@ export default function sassPluginSetup(
           fileContent,
           { 
             style: initialOptions.minify ? 'compressed' : 'expanded',
-            load_paths: [path]
+            load_paths: [
+              Deno.cwd(),
+              path
+            ]
           }
         ).to_string();
 
