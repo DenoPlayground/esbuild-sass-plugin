@@ -29,10 +29,12 @@ export default function sassPluginSetup(
   onLoadFunction(
     { filter: /\.scss$/ },
     async (args) => {
-      const file = await Deno.readTextFile(args.path);
+      console.log(args);
+      
+      const fileContent = await Deno.readTextFile(args.path);
       try {
         const css = sass(
-          file,
+          fileContent,
           { 
             style: initialOptions.minify ? 'compressed' : 'expanded'
           }
