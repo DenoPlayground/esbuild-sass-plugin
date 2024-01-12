@@ -33,6 +33,9 @@ export default function sassPluginSetup(
       
       const fileContent = await Deno.readTextFile(args.path);
 
+      console.log(fileContent);
+      
+
       try {
         const cssContent = sass(
           fileContent,
