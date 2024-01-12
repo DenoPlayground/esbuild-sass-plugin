@@ -34,7 +34,7 @@ export default function sassPluginSetup(
       const fileContent = await Deno.readTextFile(args.path);
 
       try {
-        const css = sass(
+        const cssContent = sass(
           fileContent,
           { 
             style: initialOptions.minify ? 'compressed' : 'expanded',
@@ -43,7 +43,7 @@ export default function sassPluginSetup(
         ).to_string();
 
         return {
-          contents: getTextContent(css),
+          contents: getTextContent(cssContent),
           loader: 'css',
         };
       } catch (error) {
