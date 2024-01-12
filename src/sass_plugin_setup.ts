@@ -30,6 +30,8 @@ export default function sassPluginSetup(
   onLoadFunction(
     { filter: /\.scss$/ },
     async (args) => {
+      console.log(args);
+      
       const fileDirectoryPath = dirname(args.path);
       const fileContent = await Deno.readTextFile(args.path);
 
