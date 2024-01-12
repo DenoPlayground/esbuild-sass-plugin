@@ -32,8 +32,8 @@ export default function sassPluginSetup(
       const path = new URL('.', args.path).pathname
       
       console.log(path, args.path);
-      
-      const fileContent = await Deno.readTextFile(args.path);
+
+      // const fileContent = await Deno.readTextFile(args.path);
 
       
       return {
