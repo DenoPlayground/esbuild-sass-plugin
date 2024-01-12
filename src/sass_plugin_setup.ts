@@ -30,12 +30,8 @@ export default function sassPluginSetup(
   onLoadFunction(
     { filter: /\.scss$/ },
     async (args) => {
-      const path = dirname(args.path);
-      
+      const fileDirectoryPath = dirname(args.path);
       const fileContent = await Deno.readTextFile(args.path);
-
-      console.log(fileContent);
-      
 
       try {
         const cssContent = sass(
@@ -44,7 +40,7 @@ export default function sassPluginSetup(
             style: initialOptions.minify ? 'compressed' : 'expanded',
             load_paths: [
               Deno.cwd(),
-              path
+              fileDirectoryPath
             ]
           }
         ).to_string();
