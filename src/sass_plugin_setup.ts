@@ -1,3 +1,4 @@
+import { dirname } from "https://deno.land/std@0.211.0/path/dirname.ts";
 import sass from 'https://deno.land/x/denosass@1.0.6/mod.ts';
 import {
   BuildOptions,
@@ -29,7 +30,7 @@ export default function sassPluginSetup(
   onLoadFunction(
     { filter: /\.scss$/ },
     async (args) => {
-      const path = new URL('.', args.path).pathname;
+      const path = dirname(args.path);
       
       const fileContent = await Deno.readTextFile(args.path);
 
