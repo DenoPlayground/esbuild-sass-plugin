@@ -34,35 +34,31 @@ export default function sassPluginSetup(
       const fileContent = await Deno.readTextFile(args.path);
 
       console.log(path, args.path);
-      
-      return {
-        contents: '',
-        loader: 'css'
-      }
-      // try {
-      //   const css = sass(
-      //     fileContent,
-      //     { 
-      //       style: initialOptions.minify ? 'compressed' : 'expanded',
-      //       load_paths: [path]
-      //     }
-      //   ).to_string();
 
-      //   return {
-      //     contents: getTextContent(css),
-      //     loader: 'css',
-      //   };
-      // } catch (error) {
-      //   return {
-      //     errors: [ {
-      //       id: error.name,
-      //       text: error.message,
-      //       detail: error.stack
-      //     } ],
-      //     contents: '',
-      //     loader: 'css',
-      //   };
-      // }
+      try {
+        const css = sass(
+          fileContent,
+          { 
+            style: initialOptions.minify ? 'compressed' : 'expanded',
+            load_paths: [path]
+          }
+        ).to_string();
+
+        return {
+          contents: getTextContent(css),
+          loader: 'css',
+        };
+      } catch (error) {
+        return {
+          errors: [ {
+            id: error.name,
+            text: error.message,
+            detail: error.stack
+          } ],
+          contents: '',
+          loader: 'css',
+        };
+      }
 
       
     },
