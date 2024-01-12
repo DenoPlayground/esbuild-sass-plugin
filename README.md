@@ -1,4 +1,4 @@
-# SASS Plugin Module for ESBuild
+# SASS Plugin Module for Deno ESBuild
 
 Usage:
 
