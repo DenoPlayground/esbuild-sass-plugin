@@ -31,7 +31,8 @@ export default function sassPluginSetup(
     { filter: /\.scss$/ },
     async (args) => {      
       const fileDirectoryPath = dirname(args.path);
-      // sass throws for some reason error if file is empty! Issue: https://github.com/hironichu/denosass/issues/17
+      // Issue: https://github.com/hironichu/denosass/issues/17
+      // sass throws for some reason error if file is empty!
       const fileContent = (await Deno.readTextFile(args.path)).trim() || '/**/';
 
       try {
