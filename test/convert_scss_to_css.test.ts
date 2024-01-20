@@ -4,7 +4,7 @@ import { assertEquals } from 'https://deno.land/std@0.162.0/testing/asserts.ts';
 
 Deno.test(
   'Convert SCSS to CSS',
-  async (test) => {
+  async () => {
     const sassConfig: esbuild.BuildOptions = {
       allowOverwrite: true,
       logLevel: 'silent',
