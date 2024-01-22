@@ -11,15 +11,7 @@ This plugin can be easily imported and loaded as a module for ESBuild.
 import sassPlugin from 'https://deno.land/x/esbuild_plugin_sass/mod.ts';
 
 await esbuild.build({
-  allowOverwrite: true,
-  logLevel: 'info',
-  color: true,
-  minify: true,
-  outdir: './dist',
-  entryNames: '[dir]/bundle.min',
-  entryPoints: [
-    './src/**/index.scss',
-  ],
+  ...
   plugins: [
     sassPlugin()
   ],
