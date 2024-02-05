@@ -35,33 +35,21 @@ export default function sassPluginSetup(
       // sass throws for some reason error if file is empty!
       const fileContent = (await Deno.readTextFile(args.path)).trim() || '/**/';
 
-      try {
-        const cssContent = sass(
-          fileContent,
-          { 
-            style: initialOptions.minify ? 'compressed' : 'expanded',
-            load_paths: [
-              Deno.cwd(),
-              fileDirectoryPath
-            ]
-          }
-        ).to_string();
+      const cssContent = sass(
+        fileContent,
+        { 
+          style: initialOptions.minify ? 'compressed' : 'expanded',
+          load_paths: [
+            Deno.cwd(),
+            fileDirectoryPath
+          ]
+        }
+      ).to_string();
 
-        return {
-          contents: getTextContent(cssContent),
-          loader: 'css',
-        };
-      } catch (error) {
-        return {
-          errors: [ {
-            id: error.name,
-            text: error.message,
-            detail: error.stack
-          } ],
-          contents: '',
-          loader: 'css',
-        };
-      }
+      return {
+        contents: getTextContent(cssContent),
+        loader: 'css',
+      };
     },
   );
 }
