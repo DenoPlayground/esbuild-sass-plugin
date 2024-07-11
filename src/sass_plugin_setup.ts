@@ -1,12 +1,12 @@
-import { dirname } from "https://deno.land/std@0.211.0/path/dirname.ts";
-import sass from 'https://deno.land/x/denosass@1.0.6/mod.ts';
-import {
+import { dirname } from "@std/path";
+import sass from "denosass";
+import type {
   BuildOptions,
   OnLoadArgs,
   OnLoadOptions,
   OnLoadResult,
-} from 'https://deno.land/x/esbuild@v0.19.11/mod.js';
-import getTextContent from './get_text_content.ts';
+} from "esbuild";
+import getTextContent from "./get_text_content.ts";
 
 /**
  * This function registers the onLoad function and sets some initial options.
@@ -29,26 +29,26 @@ export default function sassPluginSetup(
 ): void {
   onLoadFunction(
     { filter: /\.scss$/ },
-    async (args) => {      
+    async (args) => {
       const fileDirectoryPath = dirname(args.path);
       // Issue: https://github.com/hironichu/denosass/issues/17
       // sass throws for some reason error if file is empty!
-      const fileContent = (await Deno.readTextFile(args.path)).trim() || '/**/';
+      const fileContent = (await Deno.readTextFile(args.path)).trim() || "/**/";
 
       const cssContent = sass(
         fileContent,
-        { 
-          style: initialOptions.minify ? 'compressed' : 'expanded',
+        {
+          style: initialOptions.minify ? "compressed" : "expanded",
           load_paths: [
             Deno.cwd(),
-            fileDirectoryPath
-          ]
-        }
+            fileDirectoryPath,
+          ],
+        },
       ).to_string();
 
       return {
         contents: getTextContent(cssContent),
-        loader: 'css',
+        loader: "css",
       };
     },
   );

@@ -1,31 +1,31 @@
-import * as esbuild from 'https://deno.land/x/esbuild@v0.19.11/mod.js';
-import sassPlugin from '../mod.ts';
-import { assertEquals } from 'https://deno.land/std@0.162.0/testing/asserts.ts';
+import { assertEquals } from "@std/assert";
+import * as esbuild from "esbuild";
+import sassPlugin from "../mod.ts";
 
 Deno.test(
-  'Convert SCSS to CSS',
+  "Convert SCSS to CSS",
   async () => {
     const sassConfig: esbuild.BuildOptions = {
       allowOverwrite: true,
-      logLevel: 'silent',
+      logLevel: "silent",
       color: true,
       minify: true,
-      outfile: './test/dist/bundle.min.css',
+      outfile: "./test/dist/bundle.min.css",
       entryPoints: [
-        './test/src/index.scss',
+        "./test/src/index.scss",
       ],
       plugins: [
-        sassPlugin()
+        sassPlugin(),
       ],
     };
-    
+
     await esbuild.build(sassConfig);
-    
-    esbuild.stop()
+
+    esbuild.stop();
 
     const cssIn = `body{background-color:red}body div{background-color:#00f}\n`;
-    const cssOut = await Deno.readTextFile('./test/dist/bundle.min.css');
+    const cssOut = await Deno.readTextFile("./test/dist/bundle.min.css");
 
     assertEquals(cssOut, cssIn);
-  }
-)
+  },
+);
