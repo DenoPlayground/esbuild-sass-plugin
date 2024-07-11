@@ -1,4 +1,4 @@
-import { Plugin as ESBuildPlugin } from 'https://deno.land/x/esbuild@v0.19.11/mod.js';
+import { Plugin as ESBuildPlugin } from 'https://deno.land/x/esbuild@v0.23.0/mod.js';
 import sassPluginSetup from './sass_plugin_setup.ts';
 
 /**
