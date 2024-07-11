@@ -58,6 +58,6 @@
     "https://deno.land/x/denosass@1.0.6/src/mod.ts": "d2b63172f98238f77831995a5d6c8a06af5252ad8fbe7b9ec40b60eae86f2164",
     "https://deno.land/x/denosass@1.0.6/src/types/module.types.ts": "7a5027482ded1d2967fbe690ef8f928446c5de8811c3333f9b09ae6e8122f9ba",
     "https://deno.land/x/denosass@1.0.6/src/wasm/grass.deno.js": "a72432ce8d6b8f9c31e31c71415fdca03fe36aa22417e414bc81e2e21a8a687b",
-    "https://deno.land/x/esbuild@v0.19.11/mod.js": "bd4916647799a0cd046dcf4eafd6ace09d22d5898870bd062206b8b6343d5e6a"
+    "https://deno.land/x/esbuild@v0.23.0/mod.js": "46f2e569b50e4d1f1b379b2f9785a9b9437d52911b849df8797d9ca40ce3e1c9"
   }
 }
